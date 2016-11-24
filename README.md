@@ -1,5 +1,5 @@
 # MS5637 Generic C Driver
-Arduino library for the [MS5637 sensor](http://www.te.com/usa-en/product-CAT-BLPS0037.html)
+Generic C driver for the [MS5637 sensor](http://www.te.com/usa-en/product-CAT-BLPS0037.html)
 
 ![ms5637](http://www.te.com/content/dam/te-com/catalog/part/CAT/BLP/S00/CAT-BLPS0037-t1.jpg/jcr:content/renditions/product-details.png)
 
