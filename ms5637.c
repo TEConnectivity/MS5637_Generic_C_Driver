@@ -20,7 +20,7 @@ extern "C" {
 // Constants
 
 // MS5637 device address
-#define MS5637_ADDR													0x77 //0b1110110
+#define MS5637_ADDR													0x76 //0b1110110
 
 // MS5637 device commands
 #define MS5637_RESET_COMMAND										0x1E
