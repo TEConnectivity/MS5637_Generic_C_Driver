@@ -48,14 +48,14 @@ extern "C" {
 #define MS5637_PROM_ADDRESS_READ_ADDRESS_7							0xAE
 
 // Coefficients indexes for temperature and pressure computation
-#define MS5637_CRC_INDEX											7
+#define MS5637_CRC_INDEX											0
 #define MS5637_PRESSURE_SENSITIVITY_INDEX							1 
 #define MS5637_PRESSURE_OFFSET_INDEX								2
 #define MS5637_TEMP_COEFF_OF_PRESSURE_SENSITIVITY_INDEX				3
 #define MS5637_TEMP_COEFF_OF_PRESSURE_OFFSET_INDEX					4
 #define MS5637_REFERENCE_TEMPERATURE_INDEX							5
 #define MS5637_TEMP_COEFF_OF_TEMPERATURE_INDEX						6
-#define MS5637_COEFFICIENT_NUMBERS									8
+#define MS5637_COEFFICIENT_NUMBERS									7
 
 // Static functions
 static enum ms5637_status ms5637_write_command(uint8_t);
@@ -236,7 +236,7 @@ enum ms5637_status ms5637_read_eeprom(void)
 			return status;
 	}
     
-	if( !ms5637_crc_check( eeprom_coeff, eeprom_coeff[MS5637_CRC_INDEX] & 0x000F ) )
+	if( !ms5637_crc_check( eeprom_coeff, ( eeprom_coeff[MS5637_CRC_INDEX] & 0xF000 ) >> 12) )
 		return ms5637_status_crc_error;
 	
 	ms5637_coeff_read = true;
