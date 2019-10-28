@@ -364,11 +364,11 @@ enum ms5637_status ms5637_read_temperature_and_pressure( float *temperature, flo
 	}
 	
 	// OFF = OFF_T1 + TCO * dT
-	OFF = ( (int64_t)(eeprom_coeff[MS5637_PRESSURE_OFFSET_INDEX]) << 16 ) + ( ( (int64_t)(eeprom_coeff[MS5637_TEMP_COEFF_OF_PRESSURE_OFFSET_INDEX]) * dT ) >> 7 ) ;
+	OFF = ( (int64_t)(eeprom_coeff[MS5637_PRESSURE_OFFSET_INDEX]) << 17 ) + ( ( (int64_t)(eeprom_coeff[MS5637_TEMP_COEFF_OF_PRESSURE_OFFSET_INDEX]) * dT ) >> 6 ) ;
 	OFF -= OFF2 ;
 	
 	// Sensitivity at actual temperature = SENS_T1 + TCS * dT
-	SENS = ( (int64_t)eeprom_coeff[MS5637_PRESSURE_SENSITIVITY_INDEX] << 15 ) + ( ((int64_t)eeprom_coeff[MS5637_TEMP_COEFF_OF_PRESSURE_SENSITIVITY_INDEX] * dT) >> 8 ) ;
+	SENS = ( (int64_t)eeprom_coeff[MS5637_PRESSURE_SENSITIVITY_INDEX] << 16 ) + ( ((int64_t)eeprom_coeff[MS5637_TEMP_COEFF_OF_PRESSURE_SENSITIVITY_INDEX] * dT) >> 7 ) ;
 	SENS -= SENS2 ;
 	
 	// Temperature compensated pressure = D1 * SENS - OFF
